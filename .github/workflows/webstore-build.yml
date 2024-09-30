@@ -4,6 +4,9 @@ name: webstore-build
 
 on:
   workflow_dispatch:
+  
+env:
+  BUILD_CONF: 'Release'
 
 jobs:
     build:
@@ -18,10 +21,10 @@ jobs:
           run: dotnet restore
   
         - name: 'Build'
-          run: dotnet build --configuration release
+          run: dotnet build --configuration ${{ env.BUILD_CONF }}
   
         - name: 'Publish'
-          run: dotnet publish --configuration release -o ./webstore
+          run: dotnet publish --configuration ${{ env.BUILD_CONF }} -o ./webstore
 
         - name: Upload artifact
           uses: actions/upload-artifact@v3.2.1-node20
