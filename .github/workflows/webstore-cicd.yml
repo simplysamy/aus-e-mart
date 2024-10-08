@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: ausemartwebapp-prod
+      name: webstore-prod
 
     steps:
       - name: Download artifact from build job
